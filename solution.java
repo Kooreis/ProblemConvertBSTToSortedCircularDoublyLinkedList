@@ -1,9 +1,19 @@
-class Node {
-    int val;
-    Node left, right;
+public class Main {
+    Node head, prev;
 
-    public Node(int val) {
-        this.val = val;
-        left = right = null;
+    void bstToSortedDoublyLinkedList(Node root) {
+        if (root == null) return;
+
+        bstToSortedDoublyLinkedList(root.left);
+
+        if (prev == null) {
+            head = root;
+        } else {
+            root.left = prev;
+            prev.right = root;
+        }
+        prev = root;
+
+        bstToSortedDoublyLinkedList(root.right);
     }
 }
